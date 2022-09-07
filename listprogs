@@ -19,5 +19,5 @@ fi
 if [ "${selected:2}" == "weather" ] || [ "${selected:2}" == "cmus" ]; then
 	foot -e "${selected:2}"
 else
-	eval "${selected}"	
+	eval "${selected}" &
 fi
