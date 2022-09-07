@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Variables
+black="#1E1E2E" 
+sky="#89DCEB"
+mauve="#DDB6F2" 
+peach="#F8BD96"
+green="#ABE9B3"
+purple="#A163B2"
+pink="#F2BEFC"
+
+menu() { bemenu --prefix '' --prompt 'apps' --list 7 --fn 'monospace 10' --tb $black --tf $sky --fb $black --ff "#E856A0" --nb $black --nf "#4FB0ED" --hb $black --hf $sky; }
+
+selected=$( printf " neoirc\n gurk\n neovimb\n firefox-bin\n nicotine\n weather\n cmus" | menu )
+
+if [ "${selected:2}" == "firefox-bin" ]; then
+	notify-send -a "STOP" "Do you really need to? Just use Tor."
+fi
+if [ "${selected:2}" == "weather" ] || [ "${selected:2}" == "cmus" ]; then
+	foot -e "${selected:2}"
+else
+	eval "${selected}"	
+fi
